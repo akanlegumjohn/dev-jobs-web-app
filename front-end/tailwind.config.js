@@ -5,13 +5,13 @@ export default {
     extend: {
       colors: {
         myVioletColor: "#5964E0",
-        myLightvioletColor: "#939Bf4",
+        myLightVioletColor: "#939Bf4",
         myVeryDarkBlueColor: "#19202D",
         myMidnightColor: "#121721",
-        myWhitColor: "#FFFFFF",
+        myWhiteColor: "#FFFFFF",
         myLightGreyColor: "#F4F6F8",
         myGrayColor: "#9DAEC2",
-        myDarkgrayColor: "#6E8098",
+        myDarkGrayColor: "#6E8098",
       },
     },
   },
