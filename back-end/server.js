@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 
 const dotenv = require("dotenv");
 const colors = require("colors");
@@ -6,11 +7,14 @@ const colors = require("colors");
 const connectDB = require("./db");
 
 const app = express();
-const port = process.env.PORT | 3000;
+const port = process.env.PORT | 4000;
 
-dotenv.config({ path: "../.env" });
+dotenv.config({ path: "./.env" });
 
 connectDB();
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Middleware to parse incoming JSON data in the request body
 app.use(express.json());
