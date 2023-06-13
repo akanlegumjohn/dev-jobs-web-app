@@ -1,12 +1,16 @@
-import { FiSun, FiMoon } from "react-icons/fi";
+import moonIcon from "../assets/desktop/icon-moon.svg";
+import sunIcon from "../assets/desktop/icon-sun.svg";
+import logo from "../assets/desktop/logo.svg";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between pb-8 transform rounded-bl-full shadow-xl h-28 px-28 bg-myVioletColor -rotate-y-180 ">
-      <div className="text-lg font-bold text-white ">devjobs</div>
+    <nav className="flex items-center justify-between pb-8 transform rounded-bl-full shadow-xl h-28 px-28 -rotate-y-180 ">
+      <div>
+        <img src={logo} alt="" />
+      </div>
       <div className="flex items-center gap-0 ">
         <div>
-          <FiSun className="h-4 mb-2 text-myWhiteColor w-11 fill-white" />
+          <img className="pr-1 mb-2 " src={sunIcon} alt="icon of a sun" />
         </div>
         <div>
           <label className="relative inline-flex items-center cursor-pointer">
@@ -18,7 +22,7 @@ const Navbar = () => {
           </label>
         </div>
         <div>
-          <FiMoon className="h-4 mb-2 text-myWhiteColor w-11 fill-white" />
+          <img className="pl-2 mb-2 " src={moonIcon} alt="moon icon" />
         </div>
       </div>
     </nav>

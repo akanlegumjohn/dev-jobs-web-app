@@ -2,17 +2,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import Filter from "./Filter";
-
-import image from "../assets/logos/pod.svg";
+import MySkeleton from "./Skeleton";
+import Button from "./Button";
+import { imageData } from "./images";
 
 export const Home = () => {
   const [jobsData, setJobsData] = useState(null);
   const [visibleJobs, setVisibleJobs] = useState(12);
   const [jobStartingIndx, setJobStartingIndx] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const API_URI = "http://localhost:4000/api/devjobs";
 
   useEffect(() => {
+    // Fetch job data from API
     const devJobData = async () => {
       try {
         const response = await axios.get(API_URI);
@@ -22,40 +25,63 @@ export const Home = () => {
       }
     };
     devJobData();
+
+    // Set loading state and clear timeout on component unmount
+    const delay = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+    return () => {
+      return clearTimeout(delay);
+    };
   }, []);
 
   const handleLoadMore = () => {
+    // Increase the number of visible jobs and starting index
     setVisibleJobs((prevVisibleItems) => prevVisibleItems + 12);
     setJobStartingIndx((prevJobStartingIndx) => prevJobStartingIndx + 12);
   };
   const handleGoBack = () => {
+    // Decrease the number of visible jobs and starting index
     setVisibleJobs((prevVisibleItems) => prevVisibleItems - 12);
     setJobStartingIndx((prevJobStartingIndx) => prevJobStartingIndx - 12);
   };
 
   const data = jobsData?.data || [];
   let jobsTotalLength = data.length;
+
   return (
     <section className="relative z-10 -mt-10 mx-28">
       <Filter />
       <section className="grid py-16 lg:grid-cols-3 md:grid-cols-2 gap-x-8 gap-y-14">
-        {data.slice(jobStartingIndx, visibleJobs).map((job) => {
+        {data.slice(jobStartingIndx, visibleJobs).map((job, jobIdx) => {
           const logoBackground = job.logoBackground;
-          console.log("." + job.logo);
-          return (
+
+          return isLoading || !jobsData ? (
+            // Skeleton component for loading state
+            <MySkeleton key={jobIdx} />
+          ) : (
             <div
-              key={"." + job.id}
+              key={jobIdx}
               className="relative flex flex-col gap-2 p-10 bg-white shadow-lg rounded-xl w-350 h-228"
             >
               <div
                 style={{ backgroundColor: logoBackground }}
-                className="  p-3 absolute -top-6  bg-hsl(36, 87%, 49%)  rounded-xl"
+                className="absolute p-3 -top-6 rounded-xl"
               >
-                <img
-                  className="w-6 h-6 rounded-sm "
-                  src={image}
-                  alt={` The logo of ${job.company}`}
-                />
+                {" "}
+                {/* Render the logo image */}
+                {imageData.map((image, imgIndx) => {
+                  if (jobIdx === imgIndx) {
+                    return (
+                      <img
+                        key={imgIndx}
+                        className="object-contain w-6 h-6 rounded-sm "
+                        src={image}
+                        alt={` The logo of ${job.company}`}
+                      />
+                    );
+                  }
+                })}
               </div>
               <div className="flex gap-1 ">
                 <p className="text-base font-normal leading-5 text-myDarkGrayColor">
@@ -81,22 +107,13 @@ export const Home = () => {
           );
         })}
       </section>
+
       {jobsData && (
         <div className="flex items-center justify-center pb-10">
           {visibleJobs < jobsTotalLength ? (
-            <button
-              className="px-4 py-2 text-sm text-white rounded-sm bg-myVioletColor hover:bg-myLightVioletColor hover:px-5 hover:py-3"
-              onClick={handleLoadMore}
-            >
-              Load More
-            </button>
+            <Button handleClick={handleLoadMore} content={"Load More"} />
           ) : (
-            <button
-              className="px-4 py-2 text-sm text-white rounded-sm bg-myVioletColor hover:bg-myLightVioletColor hover:px-5 hover:py-3"
-              onClick={handleGoBack}
-            >
-              Go Back
-            </button>
+            <Button handleClick={handleGoBack} content={"Go Back"} />
           )}
         </div>
       )}
