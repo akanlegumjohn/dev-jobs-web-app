@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-import Filter from "./Filter";
-import MySkeleton from "./Skeleton";
-import Button from "./Button";
-import { imageData } from "./images";
+import { imageData } from "../components/images";
+import Filter from "../components/Filter";
+import MySkeleton from "../components/Skeleton";
+import Button from "../components/Button";
+import Loading from "../components/Loading";
 
 export const Home = () => {
   const [jobsData, setJobsData] = useState(null);
@@ -48,15 +50,16 @@ export const Home = () => {
 
   const data = jobsData?.data || [];
   let jobsTotalLength = data.length;
-
+  if (!jobsData) {
+    return <Loading />;
+  }
   return (
     <section className="relative z-10 -mt-10 mx-28">
       <Filter />
       <section className="grid py-16 lg:grid-cols-3 md:grid-cols-2 gap-x-8 gap-y-14">
         {data.slice(jobStartingIndx, visibleJobs).map((job, jobIdx) => {
           const logoBackground = job.logoBackground;
-
-          return isLoading || !jobsData ? (
+          return isLoading ? (
             // Skeleton component for loading state
             <MySkeleton key={jobIdx} />
           ) : (
@@ -83,20 +86,16 @@ export const Home = () => {
                   }
                 })}
               </div>
-              <div className="flex gap-1 ">
-                <p className="text-base font-normal leading-5 text-myDarkGrayColor">
-                  {job.postedAt}
-                </p>{" "}
-                <p className="text-base font-extrabold leading-5 text-myDarkGrayColor">
-                  .
-                </p>
-                <p className="text-base font-normal leading-5 text-myDarkGrayColor">
-                  {job.contract}
-                </p>
+              <div className="flex gap-1 font-normal leading-5 text-myDarkGrayColor">
+                <p>{job.postedAt}</p> <p>.</p>
+                <p>{job.contract}</p>
               </div>
-              <p className="text-lg font-bold leading-6 text-myVeryDarkBlueColor">
-                {job.position}
-              </p>
+              <Link to={`/job/${job.id}`}>
+                <p className="text-lg font-bold leading-6 text-myVeryDarkBlueColor">
+                  {job.position}
+                </p>
+              </Link>
+
               <p className="text-base font-medium leading-5 text-myDarkGrayColor ">
                 {job.company}
               </p>

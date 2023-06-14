@@ -4,14 +4,14 @@ import "react-loading-skeleton/dist/skeleton.css";
 // eslint-disable-next-line react/prop-types
 const MySkeleton = () => {
   return (
-    <SkeletonTheme baseColor=" #b1c8d3" highlightColor=" #ecebeb">
+    <SkeletonTheme baseColor=" #D8D9D9" highlightColor=" #ecebeb">
       <div className="relative w-350 h-228">
         <p>
           <Skeleton
             count={1}
             height={"50px"}
             width={"60px"}
-            className="absolute ml-6 top-1"
+            className="ml-6 -mb-1 "
           />
         </p>
         <p>
