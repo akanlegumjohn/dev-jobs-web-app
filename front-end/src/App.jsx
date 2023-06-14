@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import { Home } from "./components/Home";
+import { Home } from "./pages/Home";
+import JobDetails from "./pages/JobDetails";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/job/:id" element={<JobDetails />} />
       </Routes>
     </BrowserRouter>
   );
