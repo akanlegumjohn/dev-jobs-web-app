@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import moonIcon from "../assets/desktop/icon-moon.svg";
 import sunIcon from "../assets/desktop/icon-sun.svg";
 import logo from "../assets/desktop/logo.svg";
@@ -6,7 +7,9 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between pb-8 transform rounded-bl-full shadow-xl h-28 px-28 -rotate-y-180 ">
       <div>
-        <img src={logo} alt="" />
+        <Link to={"/"}>
+          <img src={logo} alt="" />
+        </Link>
       </div>
       <div className="flex items-center gap-0 ">
         <div>

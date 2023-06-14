@@ -4,12 +4,23 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap");
 
+:root {
+  --myVioletColor: #5964e0;
+  --myLightVioletColor: #939bf4;
+  --myVeryDarkBlueColor: #19202d;
+  --myMidnightColor: #121721;
+  --myWhiteColor: #ffffff;
+  --myLightGreyColor: #f4f6f8;
+  --myGrayColor: #9daec2;
+  --myDarkGrayColor: #6e8098;
+}
 html {
   box-sizing: border-box;
   font-family: "Kumbh Sans", sans-serif;
 }
 body {
   background-color: #f2f2f2;
+  overflow-x: hidden;
 }
 nav {
   background-image: url("./assets/desktop/bg-pattern-header.svg");

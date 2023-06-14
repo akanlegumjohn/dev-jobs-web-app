@@ -1,4 +1,5 @@
-// eslint-disable-next-line react/prop-types
+import PropTypes from "prop-types";
+
 const Button = ({ handleClick, content }) => {
   return (
     <button
@@ -8,6 +9,11 @@ const Button = ({ handleClick, content }) => {
       {content}
     </button>
   );
+};
+
+Button.propTypes = {
+  handleClick: PropTypes.func,
+  content: PropTypes.string.isRequired,
 };
 
 export default Button;
