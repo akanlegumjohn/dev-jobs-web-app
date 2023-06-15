@@ -7,9 +7,9 @@ import JobDetailsHeader from "../components/JobDetailsHeader";
 import JobDetailsBody from "../components/JobDetailsBody";
 import Button from "../components/Button";
 import Loading from "../components/Loading";
-
+import Navbar from "../components/Navbar";
 const JobDetails = () => {
-  const API_URI = "http://localhost:4000/api/devjobs";
+  const API_URI = "http://localhost:8000/api/devjobs";
 
   // Id to use for the dynamic routing of a job item
   const { id } = useParams();
@@ -53,45 +53,48 @@ const JobDetails = () => {
     requirements,
   } = job;
   return (
-    <section className="relative z-50 flex flex-col justify-center gap-5 -m-8 ">
-      <div className="grid gap-5 mx-72 ">
-        <JobDetailsHeader
-          logoBackground={job.logoBackground}
-          image={image}
-          company={company}
-          website={website}
-        />
-        <JobDetailsBody
-          company={company}
-          postedAt={postedAt}
-          contract={contract}
-          position={position}
-          location={location}
-          apply={apply}
-          description={description}
-          requirementsContent={requirements.content}
-          requirementsItems={requirements.items}
-          roleContent={role.content}
-          roleItems={role.items}
-        />
-      </div>
+    <>
+      <Navbar />
+      <section className="relative z-50 flex flex-col justify-center gap-5 -m-8 ">
+        <div className="grid gap-5 mx-72 ">
+          <JobDetailsHeader
+            logoBackground={job.logoBackground}
+            image={image}
+            company={company}
+            website={website}
+          />
+          <JobDetailsBody
+            company={company}
+            postedAt={postedAt}
+            contract={contract}
+            position={position}
+            location={location}
+            apply={apply}
+            description={description}
+            requirementsContent={requirements.content}
+            requirementsItems={requirements.items}
+            roleContent={role.content}
+            roleItems={role.items}
+          />
+        </div>
 
-      <div className="flex items-center justify-between py-4 mt-6 mb-2 bg-white px-72">
-        <div className="flex flex-col gap-2">
-          <p className="text-lg font-bold leading-6 text-myVeryDarkBlueColor">
-            {position}
-          </p>
-          <p className="font-normal leading-4 text-myDarkGrayColor">
-            So Digital Inc.
-          </p>
+        <div className="flex items-center justify-between py-4 mt-6 mb-2 bg-white px-72">
+          <div className="flex flex-col gap-2">
+            <p className="text-lg font-bold leading-6 text-myVeryDarkBlueColor">
+              {position}
+            </p>
+            <p className="font-normal leading-4 text-myDarkGrayColor">
+              So Digital Inc.
+            </p>
+          </div>
+          <div>
+            <Link to={apply}>
+              <Button content={"Apply Now"} />
+            </Link>
+          </div>
         </div>
-        <div>
-          <Link to={apply}>
-            <Button content={"Apply Now"} />
-          </Link>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
