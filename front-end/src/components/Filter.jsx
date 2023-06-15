@@ -18,6 +18,7 @@ const Filter = ({ filterData, setFilterData }) => {
       };
     });
   };
+
   return (
     <div className="flex justify-between h-16 gap-1 shadow-lg ">
       <div className="flex items-center w-full bg-white rounded-sm">
@@ -28,7 +29,7 @@ const Filter = ({ filterData, setFilterData }) => {
           <input
             type="text"
             placeholder="Filter by titles, companies, expertise..."
-            className="w-full py-2 pl-8 pr-3 text-sm border-none md:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor"
+            className="w-full py-2 pl-8 pr-3 text-sm border-none md:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor "
             onChange={handleFilterInput}
             name="title"
             value={filterData.title}
@@ -55,14 +56,14 @@ const Filter = ({ filterData, setFilterData }) => {
         <div className="inline-flex items-center ">
           <input
             type="checkbox"
-            id="isFullTime"
+            id="full-time-checkbox"
             className="w-2 h-6 border-none cursor-pointer md:h-10 md:w-4 form-checkbox "
             checked={filterData.isFullTime}
             onChange={handleFilterInput}
             name="isFullTime"
           />
           <label
-            htmlFor="isFullTime"
+            htmlFor="full-time-checkbox"
             className="ml-2 text-sm md:text-lg text-myVeryDarkBlueColor"
           >
             Full Time Only
@@ -75,8 +76,13 @@ const Filter = ({ filterData, setFilterData }) => {
     </div>
   );
 };
+
 Filter.propTypes = {
-  filterData: PropTypes.object.isRequired,
+  filterData: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    isFullTime: PropTypes.bool.isRequired,
+  }).isRequired,
   setFilterData: PropTypes.func.isRequired,
 };
 
