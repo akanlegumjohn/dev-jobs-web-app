@@ -5,12 +5,13 @@ import logo from "../assets/desktop/logo.svg";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between pb-8 transform rounded-bl-full shadow-xl h-28 px-28 -rotate-y-180 ">
+    <nav className="relative flex items-center justify-between px-4 pb-8 transform rounded-bl-none shadow-xl sm:rounded-bl-full h-28 md:px-28 -rotate-y-180 ">
       <div>
         <Link to={"/"}>
           <img src={logo} alt="" />
         </Link>
       </div>
+
       <div className="flex items-center gap-0 ">
         <div>
           <img className="pr-1 mb-2 " src={sunIcon} alt="icon of a sun" />

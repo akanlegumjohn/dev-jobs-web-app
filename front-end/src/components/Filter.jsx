@@ -2,12 +2,17 @@ import PropTypes from "prop-types";
 
 import locationIcon from "../assets/desktop/icon-location.svg";
 import searchIcon from "../assets/desktop/icon-search.svg";
+import filterIcon from "../assets/mobile/icon-filter.svg";
+import FilterModal from "./FilterModal";
+import { useState } from "react";
 
 const Filter = ({ filterData, setFilterData }) => {
-  /**
-   * Updates the filter data based on the user's input.
-   * If the input is a checkbox, it updates the corresponding boolean value.
-   * If the input is a text field, it updates the corresponding text value.
+  const [showFilter, setShowFilter] = useState(false);
+
+  /*
+    Updates the filter data based on the user's input.
+   If the input is a checkbox, it updates the corresponding boolean value.
+   If the input is a text field, it updates the corresponding text value.
    */
   const handleFilterInput = (e) => {
     setFilterData((prevFilterData) => {
@@ -21,7 +26,14 @@ const Filter = ({ filterData, setFilterData }) => {
 
   return (
     <div className="flex justify-between h-16 gap-1 shadow-lg ">
-      <div className="flex items-center w-full bg-white rounded-sm">
+      {showFilter && (
+        <FilterModal
+          locationIcon={locationIcon}
+          handleFilterInput={handleFilterInput}
+          filterData={filterData}
+        />
+      )}
+      <div className="relative flex items-center w-full bg-white rounded-sm ">
         <div className="relative flex items-center w-full pl-2">
           <div className="absolute left-3">
             <img src={searchIcon} alt="search icon" />
@@ -35,8 +47,22 @@ const Filter = ({ filterData, setFilterData }) => {
             value={filterData.title}
           />
         </div>
+        {/* Filter icons  */}
+        <div className="absolute flex items-center justify-center gap-6 right-8 md:hidden">
+          <div className="">
+            <img
+              onClick={() => setShowFilter((prev) => !prev)}
+              src={filterIcon}
+              alt="filter icon "
+              className="text-white cursor-pointer filter invert-100"
+            />
+          </div>
+          <div className="cursor-pointer ">
+            <img className="text-white " src={searchIcon} alt="search icon " />
+          </div>
+        </div>
       </div>
-      <div className="flex items-center w-full bg-white rounded-sm ">
+      <div className="items-center hidden w-full bg-white rounded-sm sm:flex">
         <div className="relative flex items-center w-full pl-2">
           <div className="absolute left-4">
             <img src={locationIcon} alt="location icon" />
@@ -52,7 +78,7 @@ const Filter = ({ filterData, setFilterData }) => {
           />
         </div>
       </div>
-      <div className="flex items-center justify-between w-full px-4 bg-white rounded-sm jus">
+      <div className="items-center justify-between hidden w-full px-4 bg-white rounded-sm jus sm:flex">
         <div className="inline-flex items-center ">
           <input
             type="checkbox"
@@ -70,7 +96,7 @@ const Filter = ({ filterData, setFilterData }) => {
           </label>
         </div>
         <button className="px-4 py-2 text-sm text-white rounded-sm md:text-lg bg-myVioletColor hover:bg-myLightVioletColor">
-          search
+          Search
         </button>
       </div>
     </div>

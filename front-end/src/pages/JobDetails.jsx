@@ -5,7 +5,6 @@ import axios from "axios";
 import { imageData } from "../components/images";
 import JobDetailsHeader from "../components/JobDetailsHeader";
 import JobDetailsBody from "../components/JobDetailsBody";
-import Button from "../components/Button";
 import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 const JobDetails = () => {
@@ -55,8 +54,8 @@ const JobDetails = () => {
   return (
     <>
       <Navbar />
-      <section className="relative z-50 flex flex-col justify-center gap-5 -m-8 ">
-        <div className="grid gap-5 mx-72 ">
+      <section className="relative z-50 flex flex-col items-center justify-center gap-5 md:-m-8 ">
+        <div className="grid gap-5 mx-4 md:mx-72">
           <JobDetailsHeader
             logoBackground={job.logoBackground}
             image={image}
@@ -78,8 +77,8 @@ const JobDetails = () => {
           />
         </div>
 
-        <div className="flex items-center justify-between py-4 mt-6 mb-2 bg-white px-72">
-          <div className="flex flex-col gap-2">
+        <div className="flex items-center w-full py-6 my-6 bg-white md:px-72">
+          <div className="flex-col hidden gap-2 sm:flex">
             <p className="text-lg font-bold leading-6 text-myVeryDarkBlueColor">
               {position}
             </p>
@@ -89,7 +88,9 @@ const JobDetails = () => {
           </div>
           <div>
             <Link to={apply}>
-              <Button content={"Apply Now"} />
+              <button className="w-full py-2 mx-12 text-sm font-semibold leading-6 tracking-wider text-white rounded-sm px-36 bg-myVioletColor hover:bg-myLightVioletColor">
+                Apply Now
+              </button>
             </Link>
           </div>
         </div>
