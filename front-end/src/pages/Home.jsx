@@ -63,7 +63,6 @@ export const Home = () => {
     let { isFullTime } = filterData;
     const titleRegex = new RegExp(title, "gi");
     const locationRegex = new RegExp(location, "gi");
-    console.log(job.contract, isFullTime);
 
     // Check if contract is 'Full Time' and update isFullTime state
     if (job.contract === "Full Time") {
@@ -80,14 +79,13 @@ export const Home = () => {
   });
 
   let jobsTotalLength = data.length;
-  console.log(filteredJobs.length === 0);
 
   return !jobsData ? (
     <Loading />
   ) : (
     <>
       <Navbar />
-      <section className="relative z-10 -mt-10 mx-28">
+      <section className="relative z-10 mx-4 -mt-10 md:mx-28">
         <Filter filterData={filterData} setFilterData={setFilterData} />
         <section className="grid py-16 lg:grid-cols-3 md:grid-cols-2 gap-x-8 gap-y-14">
           {filteredJobs
@@ -134,7 +132,7 @@ export const Home = () => {
                   <p className="text-base font-medium leading-5 text-myDarkGrayColor ">
                     {company}
                   </p>
-                  <p className="pt-8 font-semibold leading-5 text-myVioletColor">
+                  <p className="pt-4 font-semibold leading-5 md:pt-8 text-myVioletColor">
                     {location}
                   </p>
                 </div>

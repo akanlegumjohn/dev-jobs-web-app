@@ -24,4 +24,22 @@ body {
 }
 nav {
   background-image: url("./assets/desktop/bg-pattern-header.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  nav {
+    background-image: url("./assets/tablet/bg-pattern-header.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 767px) {
+  nav {
+    background-image: url("./assets/mobile/bg-pattern-header.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }
