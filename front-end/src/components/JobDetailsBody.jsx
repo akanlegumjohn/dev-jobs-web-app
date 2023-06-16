@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import Button from "./Button";
-
 const JobDetailsBody = ({
   postedAt,
   contract,
@@ -14,11 +12,14 @@ const JobDetailsBody = ({
   roleContent,
   requirementsItems,
   roleItems,
+  isDarkMode,
 }) => {
   return (
-    <div className="p-8 bg-white ">
-      <div className="flex items-center justify-between">
-        <div className="flex flex-col gap-1">
+    <div
+      className={`p-8  ${isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"}`}
+    >
+      <div className="flex flex-col justify-between gap-10 md:gap-0 md:items-center md:flex-row">
+        <div className="flex flex-col gap-2">
           <div className="flex gap-1 font-normal leading-4 text-myDarkGrayColor">
             <p>{postedAt}</p> <p>.</p>
             <p>{contract}</p>
@@ -31,19 +32,25 @@ const JobDetailsBody = ({
           </p>
         </div>
         <Link to={apply}>
-          <Button content={"Apply Now"} />
+          <button className="w-full p-2 text-sm font-semibold leading-6 tracking-wider text-white rounded-sm bg-myVioletColor hover:bg-myLightVioletColor">
+            Apply Now
+          </button>
         </Link>
       </div>
-      <p className="py-8 leading-7 tracking-wide  text-myDarkGrayColor">
+      <p className="py-8 leading-7 tracking-wide text-myDarkGrayColor">
         {description}
       </p>
-      <h3 className="pb-4 text-lg font-semibold tracking-wider ">
+      <h3
+        className={`pb-4 text-lg font-semibold tracking-wider ${
+          isDarkMode ? " text-white" : " text-black"
+        }`}
+      >
         Requirements
       </h3>
-      <p className="pb-4 leading-7 tracking-wide  text-myDarkGrayColor">
+      <p className="pb-4 leading-7 tracking-wide text-myDarkGrayColor">
         {requirementsContent}
       </p>
-      <ul className="font-bold  text-myVioletColor">
+      <ul className="font-bold text-myVioletColor">
         {requirementsItems.map((item, index) => (
           <li
             className="pl-4 ml-4 leading-7 list-disc "
@@ -59,13 +66,17 @@ const JobDetailsBody = ({
           </li>
         ))}
       </ul>
-      <h4 className="py-6 text-lg font-semibold tracking-wider ">
+      <h4
+        className={`py-6 text-lg font-semibold tracking-wider${
+          isDarkMode ? " text-white" : " text-black"
+        }`}
+      >
         What You Will Do
       </h4>
-      <p className="pb-4 leading-7 tracking-wide  text-myDarkGrayColor">
+      <p className="pb-4 leading-7 tracking-wide text-myDarkGrayColor">
         {roleContent}
       </p>
-      <ol className="font-bold  text-myVioletColor">
+      <ol className="font-bold text-myVioletColor">
         {roleItems.map((item, index) => (
           <li
             className="pl-4 ml-4 leading-7 list-decimal "
@@ -75,7 +86,6 @@ const JobDetailsBody = ({
               key={`${item}-${index}`}
               className="font-normal text-myDarkGrayColor"
             >
-              {" "}
               {item}
             </span>
           </li>
@@ -97,6 +107,7 @@ JobDetailsBody.propTypes = {
   roleContent: PropTypes.string.isRequired,
   requirementsItems: PropTypes.arrayOf(PropTypes.string).isRequired,
   roleItems: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
 };
 
 export default JobDetailsBody;
