@@ -22,7 +22,7 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
     isFullTime: false,
   });
 
-  const API_URI = "http://localhost:8000/api/devjobs";
+  const API_URI = "https://devjobs.up.railway.app/api/devjobs";
 
   useEffect(() => {
     // Fetch job data from API
