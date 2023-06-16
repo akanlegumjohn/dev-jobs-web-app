@@ -10,7 +10,7 @@ import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 
 const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
-  const API_URI = "http://localhost:8000/api/devjobs";
+  const API_URI = "https://devjobs.up.railway.app/api/devjobs";
   // Id to use for the dynamic routing of a job item
   const { id } = useParams();
   const [jobsData, setJobsData] = useState(null);
