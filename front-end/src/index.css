@@ -13,13 +13,13 @@
   --myLightGreyColor: #f4f6f8;
   --myGrayColor: #9daec2;
   --myDarkGrayColor: #6e8098;
+  --myDayLightColor: #f2f2f2;
 }
 html {
   box-sizing: border-box;
   font-family: "Kumbh Sans", sans-serif;
 }
 body {
-  background-color: #f2f2f2;
   overflow-x: hidden;
 }
 nav {

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import { imageData } from "../components/images";
 import Filter from "../components/Filter";
@@ -10,7 +11,7 @@ import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 import NoResultsFound from "../components/NoResultsFound";
 
-export const Home = () => {
+export const Home = ({ toggleDarkMode, isDarkMode }) => {
   const [jobsData, setJobsData] = useState(null);
   const [visibleJobs, setVisibleJobs] = useState(12);
   const [jobStartingIndx, setJobStartingIndx] = useState(0);
@@ -83,10 +84,16 @@ export const Home = () => {
   return !jobsData ? (
     <Loading />
   ) : (
-    <>
-      <Navbar />
-      <section className="relative z-10 mx-4 -mt-10 lg:mx-28 md:mx-12">
-        <Filter filterData={filterData} setFilterData={setFilterData} />
+    <main
+      className={`${isDarkMode ? "bg-myMidnightColor" : "bg-myDayLightColor"}`}
+    >
+      <Navbar toggleDarkMode={toggleDarkMode} />
+      <section className={`relative z-10 mx-4 -mt-10 lg:mx-28 md:mx-12 `}>
+        <Filter
+          filterData={filterData}
+          setFilterData={setFilterData}
+          isDarkMode={isDarkMode}
+        />
         <section className="grid py-16 lg:grid-cols-3 md:grid-cols-2 gap-x-8 gap-y-14">
           {filteredJobs
             .slice(jobStartingIndx, visibleJobs)
@@ -99,7 +106,9 @@ export const Home = () => {
               ) : (
                 <div
                   key={jobIdx}
-                  className="relative flex flex-col gap-2 p-10 bg-white shadow-lg rounded-xl w-350 h-228"
+                  className={`relative flex flex-col gap-2 p-10 shadow-lg rounded-xl w-350 h-228 ${
+                    isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"
+                  }`}
                 >
                   <div
                     style={{ backgroundColor: logoBackground }}
@@ -124,7 +133,13 @@ export const Home = () => {
                     <p>{contract}</p>
                   </div>
                   <Link to={`/job/${job.id}`}>
-                    <p className="text-lg font-bold leading-6 text-myVeryDarkBlueColor">
+                    <p
+                      className={` text-lg font-bold leading-6 text-myVeryDarkBlueColor${
+                        isDarkMode
+                          ? "  text-white"
+                          : " text-myVeryDarkBlueColor"
+                      }`}
+                    >
                       {position}
                     </p>
                   </Link>
@@ -151,6 +166,10 @@ export const Home = () => {
         )}
         {filteredJobs.length === 0 && <NoResultsFound />}
       </section>
-    </>
+    </main>
   );
+};
+Home.propTypes = {
+  toggleDarkMode: PropTypes.func.isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
 };

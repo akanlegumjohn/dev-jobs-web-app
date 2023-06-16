@@ -6,7 +6,7 @@ import filterIcon from "../assets/mobile/icon-filter.svg";
 import FilterModal from "./FilterModal";
 import { useState } from "react";
 
-const Filter = ({ filterData, setFilterData }) => {
+const Filter = ({ filterData, setFilterData, isDarkMode }) => {
   const [showFilter, setShowFilter] = useState(false);
 
   /*
@@ -23,7 +23,6 @@ const Filter = ({ filterData, setFilterData }) => {
       };
     });
   };
-
   return (
     <div className="flex justify-between h-16 gap-1 shadow-lg ">
       {showFilter && (
@@ -31,9 +30,14 @@ const Filter = ({ filterData, setFilterData }) => {
           locationIcon={locationIcon}
           handleFilterInput={handleFilterInput}
           filterData={filterData}
+          isDarkMode={isDarkMode}
         />
       )}
-      <div className="relative flex items-center w-full bg-white rounded-sm ">
+      <div
+        className={`relative flex items-center w-full ${
+          isDarkMode ? ` bg-myVeryDarkBlueColor` : ` bg-white`
+        } rounded-sm `}
+      >
         <div className="relative flex items-center w-full pl-2">
           <div className="absolute left-3">
             <img src={searchIcon} alt="search icon" />
@@ -41,7 +45,11 @@ const Filter = ({ filterData, setFilterData }) => {
           <input
             type="text"
             placeholder="Filter by titles, companies, expertise..."
-            className="w-full py-2 pl-8 pr-3 text-sm border-none lg:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor "
+            className={`w-full py-2 pl-8 pr-3 text-sm border-none lg:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor ${
+              isDarkMode
+                ? " bg-myVeryDarkBlueColor text-white"
+                : " text-myVeryDarkBlueColor bg-white"
+            }`}
             onChange={handleFilterInput}
             name="title"
             value={filterData.title}
@@ -62,7 +70,11 @@ const Filter = ({ filterData, setFilterData }) => {
           </div>
         </div>
       </div>
-      <div className="items-center hidden w-full bg-white rounded-sm sm:flex">
+      <div
+        className={`items-center hidden w-full bg-white rounded-sm sm:flex ${
+          isDarkMode ? ` bg-myVeryDarkBlueColor` : ` bg-white`
+        } rounded-sm `}
+      >
         <div className="relative flex items-center w-full pl-2">
           <div className="absolute left-4">
             <img src={locationIcon} alt="location icon" />
@@ -71,26 +83,38 @@ const Filter = ({ filterData, setFilterData }) => {
           <input
             type="text"
             placeholder="Filter by location..."
-            className="w-full py-2 pl-8 pr-3 text-sm border-none lg:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor"
+            className={`w-full py-2 pl-8 pr-3 text-sm border-none lg:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor ${
+              isDarkMode
+                ? " bg-myVeryDarkBlueColor text-white"
+                : " text-myVeryDarkBlueColor bg-white"
+            }`}
             onChange={handleFilterInput}
             name="location"
             value={filterData.location}
           />
         </div>
       </div>
-      <div className="items-center justify-between hidden w-full px-4 bg-white rounded-sm jus sm:flex">
+      <div
+        className={`items-center justify-between hidden w-full px-4 bg-white rounded-sm jus sm:flex${
+          isDarkMode ? ` bg-myVeryDarkBlueColor` : ` bg-white`
+        } rounded-sm `}
+      >
         <div className="inline-flex items-center ">
           <input
             type="checkbox"
             id="full-time-checkbox"
-            className="w-2 h-6 border-none cursor-pointer md:h-10 md:w-4 form-checkbox "
+            className={` form-checkbox w-2 h-6 border-none cursor-pointer md:h-10 md:w-4 form-checkbox ${
+              isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"
+            }`}
             checked={filterData.isFullTime}
             onChange={handleFilterInput}
             name="isFullTime"
           />
           <label
             htmlFor="full-time-checkbox"
-            className="ml-2 text-sm lg:text-lg text-myVeryDarkBlueColor"
+            className={`ml-2 text-sm lg:text-lg ${
+              isDarkMode ? "text-white" : " text-myVeryDarkBlueColor"
+            }`}
           >
             Full Time Only
           </label>
@@ -110,6 +134,7 @@ Filter.propTypes = {
     isFullTime: PropTypes.bool.isRequired,
   }).isRequired,
   setFilterData: PropTypes.func.isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
 };
 
 export default Filter;
