@@ -1,3 +1,3 @@
 # dev-jobs-web-app
 
-devjobsonline.netlify.app
+https://devjobsonline.netlify.app/
