@@ -85,7 +85,7 @@ export const Home = () => {
   ) : (
     <>
       <Navbar />
-      <section className="relative z-10 mx-4 -mt-10 md:mx-28">
+      <section className="relative z-10 mx-4 -mt-10 lg:mx-28 md:mx-12">
         <Filter filterData={filterData} setFilterData={setFilterData} />
         <section className="grid py-16 lg:grid-cols-3 md:grid-cols-2 gap-x-8 gap-y-14">
           {filteredJobs

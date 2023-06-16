@@ -54,8 +54,8 @@ const JobDetails = () => {
   return (
     <>
       <Navbar />
-      <section className="relative z-50 flex flex-col items-center justify-center gap-5 md:-m-8 ">
-        <div className="grid gap-5 mx-4 md:mx-72">
+      <section className="relative z-50 flex flex-col items-center justify-center gap-5 ">
+        <div className="grid gap-5 mx-4 lg:mx-64 md:mx-12">
           <JobDetailsHeader
             logoBackground={job.logoBackground}
             image={image}
@@ -77,8 +77,8 @@ const JobDetails = () => {
           />
         </div>
 
-        <div className="flex items-center w-full py-6 my-6 bg-white md:px-72">
-          <div className="flex-col hidden gap-2 sm:flex">
+        <div className="flex items-center w-full py-6 my-6 bg-white md:justify-between lg:px-64 md:px-12">
+          <div className="flex-col hidden gap-2 md:flex">
             <p className="text-lg font-bold leading-6 text-myVeryDarkBlueColor">
               {position}
             </p>
@@ -88,7 +88,7 @@ const JobDetails = () => {
           </div>
           <div>
             <Link to={apply}>
-              <button className="w-full py-2 mx-12 text-sm font-semibold leading-6 tracking-wider text-white rounded-sm px-36 bg-myVioletColor hover:bg-myLightVioletColor">
+              <button className="w-full py-2 mx-12 text-sm font-semibold leading-6 tracking-wider text-white rounded-sm px-36 bg-myVioletColor hover:bg-myLightVioletColor md:px-0 md:ml-0">
                 Apply Now
               </button>
             </Link>

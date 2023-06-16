@@ -5,7 +5,7 @@ import logo from "../assets/desktop/logo.svg";
 
 const Navbar = () => {
   return (
-    <nav className="relative flex items-center justify-between px-4 pb-8 transform rounded-bl-none shadow-xl sm:rounded-bl-full h-28 md:px-28 -rotate-y-180 ">
+    <nav className="relative flex items-center justify-between px-4 pb-8 transform rounded-bl-none shadow-xl sm:rounded-bl-full h-28 lg:px-28 md:px-12 -rotate-y-180 ">
       <div>
         <Link to={"/"}>
           <img src={logo} alt="" />
