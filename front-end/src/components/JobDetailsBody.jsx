@@ -12,9 +12,12 @@ const JobDetailsBody = ({
   roleContent,
   requirementsItems,
   roleItems,
+  isDarkMode,
 }) => {
   return (
-    <div className="p-8 bg-white ">
+    <div
+      className={`p-8  ${isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"}`}
+    >
       <div className="flex flex-col justify-between gap-10 md:gap-0 md:items-center md:flex-row">
         <div className="flex flex-col gap-2">
           <div className="flex gap-1 font-normal leading-4 text-myDarkGrayColor">
@@ -37,7 +40,11 @@ const JobDetailsBody = ({
       <p className="py-8 leading-7 tracking-wide text-myDarkGrayColor">
         {description}
       </p>
-      <h3 className="pb-4 text-lg font-semibold tracking-wider ">
+      <h3
+        className={`pb-4 text-lg font-semibold tracking-wider ${
+          isDarkMode ? " text-white" : " text-black"
+        }`}
+      >
         Requirements
       </h3>
       <p className="pb-4 leading-7 tracking-wide text-myDarkGrayColor">
@@ -59,7 +66,11 @@ const JobDetailsBody = ({
           </li>
         ))}
       </ul>
-      <h4 className="py-6 text-lg font-semibold tracking-wider ">
+      <h4
+        className={`py-6 text-lg font-semibold tracking-wider${
+          isDarkMode ? " text-white" : " text-black"
+        }`}
+      >
         What You Will Do
       </h4>
       <p className="pb-4 leading-7 tracking-wide text-myDarkGrayColor">
@@ -96,6 +107,7 @@ JobDetailsBody.propTypes = {
   roleContent: PropTypes.string.isRequired,
   requirementsItems: PropTypes.arrayOf(PropTypes.string).isRequired,
   roleItems: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
 };
 
 export default JobDetailsBody;

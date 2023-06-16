@@ -12,6 +12,7 @@ export default {
         myLightGreyColor: "var(--myLightGreyColor)",
         myGrayColor: "var(--myGrayColor)",
         myDarkGrayColor: "var(--myDarkGrayColor)",
+        myDayLightColor: "var(--myDayLightColor)",
       },
     },
   },

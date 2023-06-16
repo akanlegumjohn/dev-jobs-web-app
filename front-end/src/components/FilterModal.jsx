@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 
 import Modal from "react-bootstrap/Modal";
 
-function FilterModal({ locationIcon, handleFilterInput, filterData }) {
+function FilterModal({
+  locationIcon,
+  handleFilterInput,
+  filterData,
+  isDarkMode,
+}) {
   const [show, setShow] = useState(true);
   const handleClose = () => setShow(false);
 
@@ -13,10 +18,14 @@ function FilterModal({ locationIcon, handleFilterInput, filterData }) {
         dialogClassName="custom-modal"
         show={show}
         onHide={handleClose}
-        className="absolute left-0 z-50 block py-6 ml-10 mr-4 shadow-xl right-6 top-40 md:hidden"
+        className="absolute left-0 z-50 block py-8 ml-10 mr-4 shadow-2xl right-6 top-40 md:hidden"
         centered
       >
-        <Modal.Body className="flex flex-col bg-white ">
+        <Modal.Body
+          className={`flex flex-col ${
+            isDarkMode ? " bg-myVeryDarkBlueColor" : "bg-white"
+          }`}
+        >
           <div className="relative flex items-center w-full pl-6 my-3">
             <div className="absolute left-6">
               <img src={locationIcon} alt="location icon" />
@@ -25,7 +34,9 @@ function FilterModal({ locationIcon, handleFilterInput, filterData }) {
             <input
               type="text"
               placeholder="Filter by location..."
-              className="w-full py-2 text-sm border-none pl-9 md:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor "
+              className={` form-checkbox w-full py-2 text-sm border-none pl-9 md:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor  ${
+                isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"
+              }`}
               onChange={handleFilterInput}
               name="location"
               value={filterData.location}
@@ -42,7 +53,9 @@ function FilterModal({ locationIcon, handleFilterInput, filterData }) {
             />
             <label
               htmlFor="full-time-checkbox"
-              className="ml-4 text-sm font-bold text-myVeryDarkBlueColor"
+              className={`ml-4 text-sm font-bold  ${
+                isDarkMode ? "text-white" : " text-myVeryDarkBlueColor"
+              }`}
             >
               Full Time Only
             </label>
@@ -65,5 +78,6 @@ FilterModal.propTypes = {
     location: PropTypes.string.isRequired,
     isFullTime: PropTypes.string.isRequired,
   }).isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
 };
 export default FilterModal;
