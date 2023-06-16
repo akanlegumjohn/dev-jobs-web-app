@@ -14,6 +14,7 @@ function FilterModal({ locationIcon, handleFilterInput, filterData }) {
         show={show}
         onHide={handleClose}
         className="absolute left-0 z-50 block py-6 ml-10 mr-4 shadow-xl right-6 top-40 md:hidden"
+        centered
       >
         <Modal.Body className="flex flex-col bg-white ">
           <div className="relative flex items-center w-full pl-6 my-3">

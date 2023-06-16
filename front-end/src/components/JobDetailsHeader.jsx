@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 
 const JobDetailsHeader = ({ logoBackground, image, company, website }) => {
   return (
-    <div className="flex flex-col items-center justify-between h-40 -mt-6 bg-white rounded-lg md:h-auto md:flex-row">
-      <div className="flex flex-col items-center h-10 gap-3 -mt-4 md:flex-row md:h-24">
+    <div className="flex flex-col items-center justify-between h-40 -mt-6 bg-white rounded-lg md:h-auto md:flex-row md:pt-4 ">
+      <div className="flex flex-col items-center h-10 gap-3 -mt-4 md:flex-row md:h-24 md:gap-6">
         <div
-          className="flex items-center self-start justify-center h-full p-6 mx-4 rounded-lg md:p-8 "
+          className="flex items-center self-start justify-center h-full p-6 mx-4 rounded-lg md:rounded-none md:px-8 md:mx-0 "
           style={{ backgroundColor: logoBackground }}
         >
           <img
@@ -24,7 +24,7 @@ const JobDetailsHeader = ({ logoBackground, image, company, website }) => {
           </p>
         </div>
       </div>
-      <p className="p-2 mb-4 mr-2 text-sm font-semibold tracking-wider bg-myLightGreyColor text-myVioletColor">
+      <p className="p-2 mb-4 mr-2 text-sm font-semibold tracking-wider bg-myLightGreyColor text-myVioletColor md:mr-6">
         <Link to={website}> Company Site</Link>
       </p>
     </div>

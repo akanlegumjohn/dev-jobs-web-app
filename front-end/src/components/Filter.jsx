@@ -41,14 +41,14 @@ const Filter = ({ filterData, setFilterData }) => {
           <input
             type="text"
             placeholder="Filter by titles, companies, expertise..."
-            className="w-full py-2 pl-8 pr-3 text-sm border-none md:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor "
+            className="w-full py-2 pl-8 pr-3 text-sm border-none lg:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor "
             onChange={handleFilterInput}
             name="title"
             value={filterData.title}
           />
         </div>
         {/* Filter icons  */}
-        <div className="absolute flex items-center justify-center gap-6 right-8 md:hidden">
+        <div className="absolute flex items-center justify-center gap-6 right-8 sm:hidden">
           <div className="">
             <img
               onClick={() => setShowFilter((prev) => !prev)}
@@ -71,7 +71,7 @@ const Filter = ({ filterData, setFilterData }) => {
           <input
             type="text"
             placeholder="Filter by location..."
-            className="w-full py-2 pl-8 pr-3 text-sm border-none md:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor"
+            className="w-full py-2 pl-8 pr-3 text-sm border-none lg:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor"
             onChange={handleFilterInput}
             name="location"
             value={filterData.location}
@@ -90,12 +90,12 @@ const Filter = ({ filterData, setFilterData }) => {
           />
           <label
             htmlFor="full-time-checkbox"
-            className="ml-2 text-sm md:text-lg text-myVeryDarkBlueColor"
+            className="ml-2 text-sm lg:text-lg text-myVeryDarkBlueColor"
           >
             Full Time Only
           </label>
         </div>
-        <button className="px-4 py-2 text-sm text-white rounded-sm md:text-lg bg-myVioletColor hover:bg-myLightVioletColor">
+        <button className="px-4 py-2 text-sm text-white rounded-sm lg:text-lg bg-myVioletColor hover:bg-myLightVioletColor">
           Search
         </button>
       </div>
