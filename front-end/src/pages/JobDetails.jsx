@@ -33,7 +33,6 @@ const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
 
   // Find the job data and the image that match the provided ID
   const job = jobData.find((jobItem) => jobItem.id === Number(id));
-  const image = imageData.find((im, index) => index === Number(id));
 
   // If job data is still being fetched, display the loading component
   if (!jobsData) {
@@ -51,14 +50,15 @@ const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
     contract,
     description,
     requirements,
+    logo,
   } = job;
+  const image = imageData.find((im) => im.slice(-7) === logo.slice(-7));
+
   return (
-    <main>
+    <main className={`${isDarkMode ? " bg-myMidnightColor" : " bg-gray-100"}`}>
       <Navbar toggleDarkMode={toggleDarkMode} />
       <section
-        className={`relative z-50 flex flex-col items-center justify-center gap-5  md:gap-20${
-          isDarkMode ? " bg-myMidnightColor" : " bg-gray-100"
-        }`}
+        className={`relative z-50 flex flex-col items-center justify-center gap-5  md:gap-20`}
       >
         <div className="grid gap-5 mx-4 lg:mx-64 md:mx-12">
           <JobDetailsHeader
@@ -85,7 +85,7 @@ const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
         </div>
 
         <div
-          className={`flex items-center w-full py-6 my-6 bg-white md:justify-between lg:px-64 md:px-12 ${
+          className={`flex items-center w-full py-6 my-6  justify-center md:justify-between lg:px-64 md:px-12 ${
             isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"
           }`}
         >
@@ -103,7 +103,7 @@ const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
           </div>
           <div>
             <Link to={apply}>
-              <button className="w-full py-2 mx-12 text-sm font-semibold leading-6 tracking-wider text-white rounded-sm px-36 bg-myVioletColor hover:bg-myLightVioletColor md:px-0 md:ml-0">
+              <button className="w-full py-2 text-sm font-semibold leading-6 tracking-wider text-white rounded-sm px-36 bg-myVioletColor hover:bg-myLightVioletColor md:ml-0 md:px-4">
                 Apply Now
               </button>
             </Link>

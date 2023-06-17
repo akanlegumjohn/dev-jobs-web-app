@@ -18,15 +18,15 @@ function FilterModal({
         dialogClassName="custom-modal"
         show={show}
         onHide={handleClose}
-        className="absolute left-0 z-50 block py-8 ml-10 mr-4 shadow-2xl right-6 top-40 md:hidden"
+        className="absolute left-0 z-50 block  ml-10 mr-4 shadow-2xl right-6 top-48 md:hidden bg-opacity-50 backdrop-filter backdrop-blur-lg"
         centered
       >
         <Modal.Body
-          className={`flex flex-col ${
+          className={`flex flex-col  ${
             isDarkMode ? " bg-myVeryDarkBlueColor" : "bg-white"
           }`}
         >
-          <div className="relative flex items-center w-full pl-6 my-3">
+          <div className="relative flex items-center w-full pl-6 mb-3 mt-6 ">
             <div className="absolute left-6">
               <img src={locationIcon} alt="location icon" />
             </div>
@@ -62,7 +62,7 @@ function FilterModal({
           </div>
           <button
             onClick={handleClose}
-            className="px-4 py-2 text-sm font-semibold leading-6 tracking-wider text-white rounded-sm mx-7 bg-myVioletColor hover:bg-myLightVioletColor"
+            className="px-4 py-2  mb-8 text-sm font-semibold leading-6 tracking-wider text-white rounded-sm mx-7 bg-myVioletColor hover:bg-myLightVioletColor"
           >
             Search
           </button>

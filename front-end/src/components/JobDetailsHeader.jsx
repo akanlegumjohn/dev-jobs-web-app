@@ -10,7 +10,7 @@ const JobDetailsHeader = ({
 }) => {
   return (
     <div
-      className={`flex flex-col items-center justify-between h-40 -mt-6 bg-white rounded-lg md:h-auto md:flex-row md:pt-4 ${
+      className={`flex flex-col items-center justify-between h-40 -mt-6  rounded-lg md:h-auto md:flex-row md:pt-4 ${
         isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"
       }`}
     >
