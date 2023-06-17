@@ -72,10 +72,10 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
 
     // Perform filtering based on title, location, and isFullTime
     return (
-      titleRegex.test(job.company) &&
-      titleRegex.test(job.position) &&
-      locationRegex.test(job.location) &&
-      (isFullTime ? job.contract === "Full Time" : true)
+      titleRegex.test(job.company) ||
+      (titleRegex.test(job.position) &&
+        locationRegex.test(job.location) &&
+        (isFullTime ? job.contract === "Full Time" : true))
     );
   });
 
@@ -99,10 +99,12 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
             .slice(jobStartingIndx, visibleJobs)
             .map((job, jobIdx) => {
               const logoBackground = job.logoBackground;
-              const { position, postedAt, company, location, contract } = job;
+              const { position, postedAt, company, location, contract, logo } =
+                job;
+
               return isLoading ? (
                 // Skeleton component for loading state
-                <MySkeleton key={jobIdx} />
+                <MySkeleton key={jobIdx} isDarkMode={isDarkMode} />
               ) : (
                 <div
                   key={jobIdx}
@@ -116,7 +118,8 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
                   >
                     {/* Render the logo image */}
                     {imageData.map((image, imgIndx) => {
-                      if (jobIdx === imgIndx) {
+                      console.log(image);
+                      if (image.slice(-7) === logo.slice(-7)) {
                         return (
                           <img
                             key={imgIndx}
