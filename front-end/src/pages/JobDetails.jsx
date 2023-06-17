@@ -3,11 +3,11 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-import { imageData } from "../components/images";
 import JobDetailsHeader from "../components/JobDetailsHeader";
 import JobDetailsBody from "../components/JobDetailsBody";
 import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
+import { imageData } from "../../images";
 
 const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
   const API_URI = "https://devjobs.up.railway.app/api/devjobs";
