@@ -119,7 +119,7 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
                     {/* Render the logo image */}
                     {imageData.map((image, imgIndx) => {
                       console.log(image);
-                      if (image.slice(-7) === logo.slice(-7)) {
+                      if (image.slice(-6) === logo.slice(-6)) {
                         return (
                           <img
                             key={imgIndx}
