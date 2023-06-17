@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { imageData } from "../components/images";
 import Filter from "../components/Filter";
 import MySkeleton from "../components/Skeleton";
 import Button from "../components/Button";
 import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 import NoResultsFound from "../components/NoResultsFound";
+import { imageData } from "../../images";
 
 export const Home = ({ toggleDarkMode, isDarkMode }) => {
   const [jobsData, setJobsData] = useState(null);
