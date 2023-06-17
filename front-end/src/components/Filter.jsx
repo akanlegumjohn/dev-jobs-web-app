@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import { FaFilter } from "react-icons/fa";
+import { ImSearch } from "react-icons/im";
 
 import locationIcon from "../assets/desktop/icon-location.svg";
 import searchIcon from "../assets/desktop/icon-search.svg";
@@ -44,7 +46,7 @@ const Filter = ({ filterData, setFilterData, isDarkMode }) => {
           </div>
           <input
             type="text"
-            placeholder="Filter by titles, companies, expertise..."
+            placeholder="Filter by titles, companies..."
             className={`w-full py-2 pl-8 pr-3 text-sm border-none lg:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor ${
               isDarkMode
                 ? " bg-myVeryDarkBlueColor text-white"
@@ -58,20 +60,21 @@ const Filter = ({ filterData, setFilterData, isDarkMode }) => {
         {/* Filter icons  */}
         <div className="absolute flex items-center justify-center gap-6 right-8 sm:hidden">
           <div className="">
-            <img
+            <FaFilter
               onClick={() => setShowFilter((prev) => !prev)}
               src={filterIcon}
-              alt="filter icon "
-              className="text-white cursor-pointer filter invert-100"
+              className={`font-extrabold cursor-pointer filter invert-100 transform scale-x-[-1]${
+                isDarkMode ? ` fill-white` : ` fill-slate-500 `
+              } rounded-sm `}
             />
           </div>
-          <div className="cursor-pointer ">
-            <img className="text-white " src={searchIcon} alt="search icon " />
+          <div className="cursor-pointer bg-myVioletColor p-2 rounded-sm ">
+            <ImSearch className="text-white font-extrabold" />
           </div>
         </div>
       </div>
       <div
-        className={`items-center hidden w-full bg-white rounded-sm sm:flex ${
+        className={`items-center hidden w-full  rounded-sm sm:flex ${
           isDarkMode ? ` bg-myVeryDarkBlueColor` : ` bg-white`
         } rounded-sm `}
       >
@@ -95,7 +98,7 @@ const Filter = ({ filterData, setFilterData, isDarkMode }) => {
         </div>
       </div>
       <div
-        className={`items-center justify-between hidden w-full px-4 bg-white rounded-sm jus sm:flex${
+        className={`items-center justify-between hidden w-full px-4 rounded-sm jus sm:flex${
           isDarkMode ? ` bg-myVeryDarkBlueColor` : ` bg-white`
         } rounded-sm `}
       >
@@ -103,7 +106,7 @@ const Filter = ({ filterData, setFilterData, isDarkMode }) => {
           <input
             type="checkbox"
             id="full-time-checkbox"
-            className={` form-checkbox w-2 h-6 border-none cursor-pointer md:h-10 md:w-4 form-checkbox ${
+            className={` form-checkbox w-2 h-6 border-none cursor-pointer md:h-10 md:w-4  ${
               isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"
             }`}
             checked={filterData.isFullTime}
@@ -113,7 +116,7 @@ const Filter = ({ filterData, setFilterData, isDarkMode }) => {
           <label
             htmlFor="full-time-checkbox"
             className={`ml-2 text-sm lg:text-lg ${
-              isDarkMode ? "text-white" : " text-myVeryDarkBlueColor"
+              isDarkMode ? " text-myDayLightColor" : " text-black"
             }`}
           >
             Full Time Only
