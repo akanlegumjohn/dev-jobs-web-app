@@ -21,7 +21,7 @@ const JobDetailsHeader = ({
         >
           <img
             className="object-contain h-auto min-w-full "
-            src={image}
+            src={image.logoName}
             alt={` The logo of ${company}`}
           />
         </div>
