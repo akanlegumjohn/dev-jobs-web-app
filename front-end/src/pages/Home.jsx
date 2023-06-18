@@ -99,8 +99,7 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
             .slice(jobStartingIndx, visibleJobs)
             .map((job, jobIdx) => {
               const logoBackground = job.logoBackground;
-              const { position, postedAt, company, location, contract, logo } =
-                job;
+              const { position, postedAt, company, location, contract } = job;
 
               return isLoading ? (
                 // Skeleton component for loading state
@@ -118,13 +117,13 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
                   >
                     {/* Render the logo image */}
                     {imageData.map((image, imgIndx) => {
-                      console.log(image);
-                      if (image.slice(-6) === logo.slice(-6)) {
+                      if (image.id === job.id) {
+                        console.log(typeof image.id, typeof job.id);
                         return (
                           <img
                             key={imgIndx}
                             className="object-contain w-6 h-6 rounded-sm "
-                            src={image}
+                            src={image.logoName}
                             alt={` The logo of ${job.company}`}
                           />
                         );

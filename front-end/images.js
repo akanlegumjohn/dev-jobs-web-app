@@ -12,16 +12,79 @@ import crowdfund from "./src/assets/logos/crowdfund.svg";
 import typemaster from "./src/assets/logos/typemaster.svg";
 
 export const imageData = [
-  scoot,
-  blogr,
-  vector,
-  officelite,
-  pod,
-  creative,
-  pomodoro,
-  maker,
-  coffeeroasters,
-  mastercraft,
-  crowdfund,
-  typemaster,
+  {
+    company: "scoot",
+    logoName: scoot,
+    id: 1,
+  },
+  {
+    company: "blogr",
+    logoName: blogr,
+    id: 2,
+  },
+  {
+    company: "vector",
+    logoName: vector,
+    id: 3,
+  },
+  {
+    company: "officelite",
+    logoName: officelite,
+    id: 4,
+  },
+  {
+    company: "pod",
+    logoName: pod,
+    id: 5,
+  },
+  {
+    company: "creative",
+    logoName: creative,
+    id: 6,
+  },
+  {
+    company: "pomodoro",
+    logoName: pomodoro,
+    id: 7,
+  },
+  {
+    company: "maker",
+    logoName: maker,
+    id: 8,
+  },
+  {
+    company: "coffeeroasters",
+    logoName: coffeeroasters,
+    id: 9,
+  },
+  {
+    company: "mastercraft",
+    logoName: mastercraft,
+    id: 10,
+  },
+  {
+    company: "crowdfund",
+    logoName: crowdfund,
+    id: 11,
+  },
+  {
+    company: "typemaster",
+    logoName: typemaster,
+    id: 12,
+  },
+  {
+    company: "crowdfund",
+    logoName: crowdfund,
+    id: 13,
+  },
+  {
+    company: "coffeeroasters",
+    logoName: coffeeroasters,
+    id: 14,
+  },
+  {
+    company: "blogr",
+    logoName: blogr,
+    id: 15,
+  },
 ];

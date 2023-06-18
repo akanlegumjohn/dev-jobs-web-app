@@ -50,9 +50,8 @@ const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
     contract,
     description,
     requirements,
-    logo,
   } = job;
-  const image = imageData.find((im) => im.slice(-7) === logo.slice(-7));
+  const image = imageData.find((im) => im.id === job.id);
 
   return (
     <main className={`${isDarkMode ? " bg-myMidnightColor" : " bg-gray-100"}`}>
@@ -103,7 +102,7 @@ const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
           </div>
           <div>
             <Link to={apply}>
-              <button className="w-full py-2 text-sm font-semibold leading-6 tracking-wider text-white rounded-sm px-36 bg-myVioletColor hover:bg-myLightVioletColor md:ml-0 md:px-4">
+              <button className="w-full px-24 py-2 text-sm font-semibold text-white rounded-sm bg-myVioletColor hover:bg-myLightVioletColor md:ml-0 md:px-4">
                 Apply Now
               </button>
             </Link>
