@@ -15,7 +15,7 @@ const Navbar = ({ toggleDarkMode }) => {
         </Link>
       </div>
 
-      <div className="flex items-center gap-0 ">
+      <div className="flex items-center gap-1">
         <div>
           <img className="pr-1 mt-2" src={sunIcon} alt="icon of a sun" />
         </div>

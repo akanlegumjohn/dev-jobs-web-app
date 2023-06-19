@@ -6,7 +6,7 @@ import filterIcon from "../assets/mobile/icon-filter.svg";
 
 const MobileFilter = ({ setShowFilter, isDarkMode }) => {
   return (
-    <div className="flex items-center justify-center gap-6 pr-2 right-8 sm:hidden">
+    <div className="flex items-center justify-center gap-8 pr-6 right-8 sm:hidden">
       <div className="">
         <FaFilter
           onClick={() => setShowFilter((prev) => !prev)}
