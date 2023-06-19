@@ -17,10 +17,11 @@ function FilterModal({
       <Modal
         show={show}
         onHide={handleClose}
-        className="fixed inset-0 z-50 flex items-center justify-center ml-5 mr-8 shadow-2xl bg-opacity-5 top-44 md:hidden backdrop-filter backdrop-blur-sm "
+        className="fixed inset-0 z-50 items-center justify-center ml-5 mr-8 bg-opacity-25 shadow-2xl outline-none top-44 md:hidden backdrop-filter backdrop-blur-sm backdrop-opacity-60 "
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
       >
         <Modal.Body
-          className={`flex flex-col  ${
+          className={`flex flex-col rounded-md py-2 ${
             isDarkMode ? " bg-myVeryDarkBlueColor" : "bg-white"
           }`}
         >
@@ -42,6 +43,7 @@ function FilterModal({
               value={filterData.location}
             />
           </div>
+          <hr className="py-2 " />
           <div className="inline-flex items-center mb-4 px-7">
             <input
               type="checkbox"

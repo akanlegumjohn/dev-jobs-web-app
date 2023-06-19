@@ -39,10 +39,10 @@ const JobDetailsHeader = ({
         </div>
       </div>
       <p
-        className={`p-2 mb-4 mr-2 text-sm font-semibold tracking-wider bg- text-myVioletColor md:mr-6 rounded-sm${
+        className={`p-2 mb-4 mr-2 text-sm font-semibold tracking-wider bg- text-myVioletColor   md:mr-6 rounded-sm${
           isDarkMode
-            ? " bg-gray-800 hover:bg-gray-700"
-            : " bg-myLightGreyColor  hover:bg-gray-200"
+            ? " bg-gray-800 hover:bg-gray-700 hover:text-white"
+            : " bg-myLightGreyColor  hover:bg-gray-200 "
         }`}
       >
         <Link to={website}> Company Site</Link>
