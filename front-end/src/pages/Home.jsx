@@ -45,17 +45,6 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
     };
   }, []);
 
-  const handleLoadMore = () => {
-    // Increase the number of visible jobs and starting index
-    setVisibleJobs((prevVisibleItems) => prevVisibleItems + 12);
-    setJobStartingIndx((prevJobStartingIndx) => prevJobStartingIndx + 12);
-  };
-  const handleGoBack = () => {
-    // Decrease the number of visible jobs and starting index
-    setVisibleJobs((prevVisibleItems) => prevVisibleItems - 12);
-    setJobStartingIndx((prevJobStartingIndx) => prevJobStartingIndx - 12);
-  };
-
   const data = jobsData?.data || [];
 
   const filteredJobs = data.filter((job) => {
@@ -72,14 +61,19 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
 
     // Perform filtering based on title, location, and isFullTime
     return (
-      titleRegex.test(job.company) ||
-      (titleRegex.test(job.position) &&
-        locationRegex.test(job.location) &&
-        (isFullTime ? job.contract === "Full Time" : true))
+      (titleRegex.test(job.company) || titleRegex.test(job.position)) &&
+      locationRegex.test(job.location) &&
+      (isFullTime ? job.contract === "Full Time" : true)
     );
   });
 
   let jobsTotalLength = data.length;
+
+  const handleLoadMore = () => {
+    // Increase the number of visible jobs and starting index
+    setVisibleJobs(data.length);
+    setJobStartingIndx(0);
+  };
 
   return !jobsData ? (
     <Loading />
@@ -105,38 +99,37 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
                 // Skeleton component for loading state
                 <MySkeleton key={jobIdx} isDarkMode={isDarkMode} />
               ) : (
-                <div
-                  key={jobIdx}
-                  className={`relative flex flex-col gap-2 p-10 shadow-lg rounded-xl w-350 h-228 ${
-                    isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"
-                  }`}
-                >
+                <Link to={`/job/${job.id}`}>
                   <div
-                    style={{ backgroundColor: logoBackground }}
-                    className="absolute p-3 -top-6 rounded-xl"
+                    key={jobIdx}
+                    className={`relative flex flex-col gap-2 p-10 shadow-lg rounded-xl w-350 h-228 ${
+                      isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"
+                    }`}
                   >
-                    {/* Render the logo image */}
-                    {imageData.map((image, imgIndx) => {
-                      if (image.id === job.id) {
-                        console.log(typeof image.id, typeof job.id);
-                        return (
-                          <img
-                            key={imgIndx}
-                            className="object-contain w-6 h-6 rounded-sm "
-                            src={image.logoName}
-                            alt={` The logo of ${job.company}`}
-                          />
-                        );
-                      }
-                    })}
-                  </div>
-                  <div className="flex gap-1 font-normal leading-5 text-myDarkGrayColor">
-                    <p>{postedAt}</p> <p>.</p>
-                    <p>{contract}</p>
-                  </div>
-                  <Link to={`/job/${job.id}`}>
+                    <div
+                      style={{ backgroundColor: logoBackground }}
+                      className="absolute p-3 -top-6 rounded-xl"
+                    >
+                      {/* Render the logo image */}
+                      {imageData.map((image, imgIndx) => {
+                        if (image.id === job.id) {
+                          return (
+                            <img
+                              key={imgIndx}
+                              className="object-contain w-6 h-6 rounded-sm "
+                              src={image.logoName}
+                              alt={` The logo of ${job.company}`}
+                            />
+                          );
+                        }
+                      })}
+                    </div>
+                    <div className="flex gap-1 font-normal leading-5 text-myDarkGrayColor">
+                      <p>{postedAt}</p> <p>.</p>
+                      <p>{contract}</p>
+                    </div>
                     <p
-                      className={` text-lg font-bold leading-6 text-myVeryDarkBlueColor${
+                      className={` hover:text-myDarkGrayColor text-lg font-bold leading-6 text-myVeryDarkBlueColor${
                         isDarkMode
                           ? "  text-white"
                           : " text-myVeryDarkBlueColor"
@@ -144,26 +137,21 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
                     >
                       {position}
                     </p>
-                  </Link>
 
-                  <p className="text-base font-medium leading-5 text-myDarkGrayColor ">
-                    {company}
-                  </p>
-                  <p className="pt-4 font-semibold leading-5 md:pt-8 text-myVioletColor">
-                    {location}
-                  </p>
-                </div>
+                    <p className="text-base font-medium leading-5 text-myDarkGrayColor ">
+                      {company}
+                    </p>
+                    <p className="pt-4 font-semibold leading-5 md:pt-8 text-myVioletColor">
+                      {location}
+                    </p>
+                  </div>
+                </Link>
               );
             })}
         </section>
-
-        {jobsData && filteredJobs.length !== 0 && (
+        {visibleJobs !== jobsTotalLength && (
           <div className="flex items-center justify-center pb-10">
-            {visibleJobs < jobsTotalLength ? (
-              <Button handleClick={handleLoadMore} content={"Load More"} />
-            ) : (
-              <Button handleClick={handleGoBack} content={"Go Back"} />
-            )}
+            <Button handleClick={handleLoadMore} content={"Load More"} />
           </div>
         )}
         {filteredJobs.length === 0 && <NoResultsFound />}
