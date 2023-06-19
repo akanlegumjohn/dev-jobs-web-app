@@ -1,12 +1,10 @@
 import PropTypes from "prop-types";
-import { FaFilter } from "react-icons/fa";
-import { ImSearch } from "react-icons/im";
 
 import locationIcon from "../assets/desktop/icon-location.svg";
 import searchIcon from "../assets/desktop/icon-search.svg";
-import filterIcon from "../assets/mobile/icon-filter.svg";
 import FilterModal from "./FilterModal";
 import { useState } from "react";
+import MobileFilter from "./MobileFilter";
 
 const Filter = ({ filterData, setFilterData, isDarkMode }) => {
   const [showFilter, setShowFilter] = useState(false);
@@ -57,21 +55,7 @@ const Filter = ({ filterData, setFilterData, isDarkMode }) => {
             value={filterData.title}
           />
         </div>
-        {/* Filter icons  */}
-        <div className="absolute flex items-center justify-center gap-6 right-8 sm:hidden">
-          <div className="">
-            <FaFilter
-              onClick={() => setShowFilter((prev) => !prev)}
-              src={filterIcon}
-              className={`font-extrabold cursor-pointer filter invert-100 transform scale-x-[-1]${
-                isDarkMode ? ` fill-white` : ` fill-slate-500 `
-              } rounded-sm `}
-            />
-          </div>
-          <div className="cursor-pointer bg-myVioletColor p-2 rounded-sm ">
-            <ImSearch className="text-white font-extrabold" />
-          </div>
-        </div>
+        <MobileFilter isDarkMode={isDarkMode} setShowFilter={setShowFilter} />
       </div>
       <div
         className={`items-center hidden w-full  rounded-sm sm:flex ${

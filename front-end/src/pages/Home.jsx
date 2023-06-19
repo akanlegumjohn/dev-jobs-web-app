@@ -1,15 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Filter from "../components/Filter";
-import MySkeleton from "../components/Skeleton";
 import Button from "../components/Button";
 import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 import NoResultsFound from "../components/NoResultsFound";
-import { imageData } from "../../images";
+
+import JobCard from "../components/JobCard";
 
 export const Home = ({ toggleDarkMode, isDarkMode }) => {
   const [jobsData, setJobsData] = useState(null);
@@ -74,6 +73,7 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
     setVisibleJobs(data.length);
     setJobStartingIndx(0);
   };
+  console.log(filteredJobs.length, visibleJobs, jobsTotalLength);
 
   return !jobsData ? (
     <Loading />
@@ -89,76 +89,26 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
           isDarkMode={isDarkMode}
         />
         <section className="grid py-16 lg:grid-cols-3 md:grid-cols-2 gap-x-8 gap-y-14">
-          {filteredJobs
-            .slice(jobStartingIndx, visibleJobs)
-            .map((job, jobIdx) => {
-              const logoBackground = job.logoBackground;
-              const { position, postedAt, company, location, contract } = job;
-
-              return isLoading ? (
-                // Skeleton component for loading state
-                <MySkeleton key={jobIdx} isDarkMode={isDarkMode} />
-              ) : (
-                <Link to={`/job/${job.id}`}>
-                  <div
-                    key={jobIdx}
-                    className={`relative flex flex-col gap-2 p-10 shadow-lg rounded-xl w-350 h-228 ${
-                      isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"
-                    }`}
-                  >
-                    <div
-                      style={{ backgroundColor: logoBackground }}
-                      className="absolute p-3 -top-6 rounded-xl"
-                    >
-                      {/* Render the logo image */}
-                      {imageData.map((image, imgIndx) => {
-                        if (image.id === job.id) {
-                          return (
-                            <img
-                              key={imgIndx}
-                              className="object-contain w-6 h-6 rounded-sm "
-                              src={image.logoName}
-                              alt={` The logo of ${job.company}`}
-                            />
-                          );
-                        }
-                      })}
-                    </div>
-                    <div className="flex gap-1 font-normal leading-5 text-myDarkGrayColor">
-                      <p>{postedAt}</p> <p>.</p>
-                      <p>{contract}</p>
-                    </div>
-                    <p
-                      className={` hover:text-myDarkGrayColor text-lg font-bold leading-6 text-myVeryDarkBlueColor${
-                        isDarkMode
-                          ? "  text-white"
-                          : " text-myVeryDarkBlueColor"
-                      }`}
-                    >
-                      {position}
-                    </p>
-
-                    <p className="text-base font-medium leading-5 text-myDarkGrayColor ">
-                      {company}
-                    </p>
-                    <p className="pt-4 font-semibold leading-5 md:pt-8 text-myVioletColor">
-                      {location}
-                    </p>
-                  </div>
-                </Link>
-              );
-            })}
+          <JobCard
+            jobStartingIndx={jobStartingIndx}
+            isDarkMode={isDarkMode}
+            isLoading={isLoading}
+            filteredJobs={filteredJobs}
+            visibleJobs={visibleJobs}
+          />
         </section>
-        {visibleJobs !== jobsTotalLength && (
-          <div className="flex items-center justify-center pb-10">
-            <Button handleClick={handleLoadMore} content={"Load More"} />
-          </div>
-        )}
+        {visibleJobs !== jobsTotalLength &&
+          filteredJobs.length >= visibleJobs && (
+            <div className="flex items-center justify-center pb-10">
+              <Button handleClick={handleLoadMore} content={"Load More"} />
+            </div>
+          )}
         {filteredJobs.length === 0 && <NoResultsFound />}
       </section>
     </main>
   );
 };
+
 Home.propTypes = {
   toggleDarkMode: PropTypes.func.isRequired,
   isDarkMode: PropTypes.bool.isRequired,
