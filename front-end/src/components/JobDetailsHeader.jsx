@@ -55,7 +55,7 @@ const JobDetailsHeader = ({
 JobDetailsHeader.propTypes = {
   website: PropTypes.string.isRequired,
   logoBackground: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.object.isRequired,
   company: PropTypes.string.isRequired,
   isDarkMode: PropTypes.bool.isRequired,
 };

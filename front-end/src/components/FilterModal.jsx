@@ -15,11 +15,9 @@ function FilterModal({
   return (
     <>
       <Modal
-        dialogClassName="custom-modal"
         show={show}
         onHide={handleClose}
-        className="absolute left-0 z-50 block ml-10 mr-4 bg-opacity-50 shadow-2xl right-6 top-48 md:hidden backdrop-filter backdrop-blur-lg"
-        centered
+        className="fixed inset-0 z-50 flex items-center justify-center ml-5 mr-8 shadow-2xl bg-opacity-5 top-44 md:hidden backdrop-filter backdrop-blur-sm "
       >
         <Modal.Body
           className={`flex flex-col  ${
@@ -35,7 +33,9 @@ function FilterModal({
               type="text"
               placeholder="Filter by location..."
               className={` form-checkbox w-full py-2 text-sm border-none pl-9 md:text-lg rounded-xl focus:outline-none text-myVeryDarkBlueColor  ${
-                isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"
+                isDarkMode
+                  ? " bg-myVeryDarkBlueColor text-white"
+                  : " bg-white text-black"
               }`}
               onChange={handleFilterInput}
               name="location"
