@@ -73,7 +73,6 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
     setVisibleJobs(data.length);
     setJobStartingIndx(0);
   };
-  console.log(filteredJobs.length, visibleJobs, jobsTotalLength);
 
   return !jobsData ? (
     <Loading />
