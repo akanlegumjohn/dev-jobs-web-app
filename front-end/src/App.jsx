@@ -5,7 +5,10 @@ import PageNotFound from "./pages/PageNotFound";
 import { useState } from "react";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(
+    window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
 
   const toggleDarkMode = () => {
     setIsDarkMode((prevMode) => !prevMode);
