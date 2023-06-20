@@ -36,7 +36,7 @@ const JobDetailsBody = ({
           </p>
         </div>
         <Link to={apply}>
-          <button className="w-full p-2 text-sm font-semibold leading-6 tracking-wider text-white rounded-sm bg-myVioletColor hover:bg-myLightVioletColor">
+          <button className="w-full px-6 py-2 text-sm font-normal leading-6 tracking-wider text-white rounded-md bg-myVioletColor hover:bg-myLightVioletColor">
             Apply Now
           </button>
         </Link>
