@@ -1,7 +1,3 @@
-# dev-jobs-web-app
-
-https://devjobsonline.netlify.app/
-
 # Devjobs Web App
 
 This is a full-stack web application for finding and applying to developer job opportunities.
@@ -26,6 +22,12 @@ This is a full-stack web application for finding and applying to developer job o
 - Full-stack application built using React.js, Node.js, Express, and MongoDB.
 
 ## Screenshots
+
+![Screenshot 1](front-end/src/screenshots/jobdetails-smaller-screen.png)
+![Screenshot 2](front-end/src/screenshots/Large-screen-dark-mode.png)
+![Screenshot 3](front-end/src/screenshots/large-screen-job-details-page.png)
+![Screenshot 3](front-end/src/screenshots/Large-screen-white-mode.png)
+![Screenshot 3](front-end/src/screenshots/small-screen-job-details-page.png)
 
 Include screenshots or GIFs showcasing the different pages and features of your application.
 
@@ -57,8 +59,7 @@ To run this project locally, follow these steps:
 
 ## Deployment
 
-The deployed version of the application can be found at
-https://devjobsonline.netlify.app/
+The deployed version of the application can be found at [devjobs-web-app](https://devjobsonline.netlify.app/)
 
 ## Contact
 

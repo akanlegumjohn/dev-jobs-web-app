@@ -24,7 +24,7 @@ const Filter = ({ filterData, setFilterData, isDarkMode }) => {
     });
   };
   return (
-    <div className="flex justify-between h-16 gap-1 shadow-lg ">
+    <div className="flex justify-between h-16 gap-0 rounded-md shadow-lg">
       {showFilter && (
         <FilterModal
           locationIcon={locationIcon}
@@ -34,11 +34,11 @@ const Filter = ({ filterData, setFilterData, isDarkMode }) => {
         />
       )}
       <div
-        className={`relative flex items-center w-full ${
+        className={`relative flex items-center w-full   md:border-r border-r-slate-500 ${
           isDarkMode ? ` bg-myVeryDarkBlueColor` : ` bg-white`
         } rounded-sm `}
       >
-        <div className="relative flex items-center w-full pl-2">
+        <div className="relative flex items-center w-full pl-2 ">
           <div className="absolute left-3">
             <img src={searchIcon} alt="search icon" />
           </div>
@@ -58,7 +58,7 @@ const Filter = ({ filterData, setFilterData, isDarkMode }) => {
         <MobileFilter isDarkMode={isDarkMode} setShowFilter={setShowFilter} />
       </div>
       <div
-        className={`items-center hidden w-full  rounded-sm sm:flex ${
+        className={`items-center hidden w-full  rounded-sm sm:flex  border-r border-r-slate-500${
           isDarkMode ? ` bg-myVeryDarkBlueColor` : ` bg-white`
         } rounded-sm `}
       >
@@ -106,7 +106,7 @@ const Filter = ({ filterData, setFilterData, isDarkMode }) => {
             Full Time Only
           </label>
         </div>
-        <button className="px-4 py-2 text-sm text-white rounded-sm lg:text-lg bg-myVioletColor hover:bg-myLightVioletColor">
+        <button className="px-4 py-2 text-sm text-white rounded-md lg:text-lg bg-myVioletColor hover:bg-myLightVioletColor">
           Search
         </button>
       </div>

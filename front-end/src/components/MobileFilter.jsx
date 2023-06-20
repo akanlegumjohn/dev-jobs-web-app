@@ -6,17 +6,17 @@ import filterIcon from "../assets/mobile/icon-filter.svg";
 
 const MobileFilter = ({ setShowFilter, isDarkMode }) => {
   return (
-    <div className="flex items-center justify-center gap-8 pr-6 right-8 sm:hidden">
+    <div className="flex items-center justify-center gap-6 pr-4 right-8 sm:hidden">
       <div className="">
         <FaFilter
           onClick={() => setShowFilter((prev) => !prev)}
           src={filterIcon}
-          className={`font-extrabold cursor-pointer filter invert-100 transform scale-x-[-1]${
+          className={`font-extrabold text-[1.3rem] cursor-pointer filter invert-100 transform scale-x-[-1]${
             isDarkMode ? ` fill-white` : ` fill-slate-500 `
           } rounded-sm `}
         />
       </div>
-      <div className="p-2 rounded-sm cursor-pointer bg-myVioletColor ">
+      <div className="p-4 rounded-sm cursor-pointer bg-myVioletColor ">
         <ImSearch className="font-extrabold text-white" />
       </div>
     </div>

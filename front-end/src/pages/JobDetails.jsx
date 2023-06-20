@@ -102,7 +102,7 @@ const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
           </div>
           <div>
             <Link to={apply}>
-              <button className="w-full px-24 py-2 text-sm font-semibold text-white rounded-sm bg-myVioletColor hover:bg-myLightVioletColor md:ml-0 md:px-4">
+              <button className="w-full px-24 py-3 text-sm font-normal text-white rounded-md bg-myVioletColor hover:bg-myLightVioletColor md:ml-0 md:px-4">
                 Apply Now
               </button>
             </Link>
