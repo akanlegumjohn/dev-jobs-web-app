@@ -23,13 +23,22 @@ This is a full-stack web application for finding and applying to developer job o
 
 ## Screenshots
 
-![Screenshot 1](front-end/src/screenshots/jobdetails-smaller-screen.png)
-![Screenshot 2](front-end/src/screenshots/Large-screen-dark-mode.png)
-![Screenshot 3](front-end/src/screenshots/large-screen-job-details-page.png)
+- View On Large Screens
+
 ![Screenshot 3](front-end/src/screenshots/Large-screen-white-mode.png)
+![Screenshot 2](front-end/src/screenshots/Large-screen-dark-mode.png)
+
+- Job Details page On Larger Screens
+
+![Screenshot 3](front-end/src/screenshots/large-screen-job-details-page.png)
+
+- Index page On Smaller Screens
+
 ![Screenshot 3](front-end/src/screenshots/small-screen-job-details-page.png)
 
-Include screenshots or GIFs showcasing the different pages and features of your application.
+- Job Details Page on Smaller page
+
+![Screenshot 1](front-end/src/screenshots/jobdetails-smaller-screen.png)
 
 ## Technologies
 
