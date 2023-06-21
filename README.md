@@ -68,7 +68,7 @@ To run this project locally, follow these steps:
 
 ## Deployment
 
-The deployed version of the application can be found at [devjobs-web-app](https://devjobsonline.netlify.app/)
+The deployed version of the application can be found at https://devjobsonline.netlify.app/
 
 ## Contact
 
