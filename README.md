@@ -50,21 +50,7 @@ This is a full-stack web application for finding and applying to developer job o
 - Tailwind CSS: Utility-first CSS framework for styling the application.
 - Framer Motion: Animation library for creating interactive and engaging UI transitions.
 
-## Installation
 
-To run this project locally, follow these steps:
-
-1. Clone the repository:
-   `https://github.com/akanlegumjohn/dev-jobs-web-app.git`
-
-2. Navigate to project directory
-   `cd dev-jobs-web-app`
-
-3. Install dependencies
-   `npm install`
-
-4. Start a development server
-   `npm run dev`
 
 ## Deployment
 
