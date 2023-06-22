@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { imageData } from "../components/images";
 import Filter from "../components/Filter";
 import MySkeleton from "../components/Skeleton";
 import Button from "../components/Button";
 import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 import NoResultsFound from "../components/NoResultsFound";
+import { imageData } from "../../images";
 
 export const Home = ({ toggleDarkMode, isDarkMode }) => {
   const [jobsData, setJobsData] = useState(null);
@@ -22,7 +22,7 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
     isFullTime: false,
   });
 
-  const API_URI = "http://localhost:8000/api/devjobs";
+  const API_URI = "https://devjobs.up.railway.app/api/devjobs";
 
   useEffect(() => {
     // Fetch job data from API
@@ -72,10 +72,10 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
 
     // Perform filtering based on title, location, and isFullTime
     return (
-      titleRegex.test(job.company) &&
-      titleRegex.test(job.position) &&
-      locationRegex.test(job.location) &&
-      (isFullTime ? job.contract === "Full Time" : true)
+      titleRegex.test(job.company) ||
+      (titleRegex.test(job.position) &&
+        locationRegex.test(job.location) &&
+        (isFullTime ? job.contract === "Full Time" : true))
     );
   });
 
@@ -99,10 +99,12 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
             .slice(jobStartingIndx, visibleJobs)
             .map((job, jobIdx) => {
               const logoBackground = job.logoBackground;
-              const { position, postedAt, company, location, contract } = job;
+              const { position, postedAt, company, location, contract, logo } =
+                job;
+
               return isLoading ? (
                 // Skeleton component for loading state
-                <MySkeleton key={jobIdx} />
+                <MySkeleton key={jobIdx} isDarkMode={isDarkMode} />
               ) : (
                 <div
                   key={jobIdx}
@@ -116,7 +118,8 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
                   >
                     {/* Render the logo image */}
                     {imageData.map((image, imgIndx) => {
-                      if (jobIdx === imgIndx) {
+                      console.log(image);
+                      if (image.slice(-7) === logo.slice(-7)) {
                         return (
                           <img
                             key={imgIndx}

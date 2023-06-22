@@ -24,7 +24,11 @@ const JobDetailsBody = ({
             <p>{postedAt}</p> <p>.</p>
             <p>{contract}</p>
           </div>
-          <p className="text-lg font-bold leading-6 md:text-2xl text-myVeryDarkBlueColor">
+          <p
+            className={`text-lg font-bold leading-6 md:text-2xl   ${
+              isDarkMode ? " text-white " : " text-myVeryDarkBlueColor "
+            }`}
+          >
             {position}
           </p>
           <p className="text-sm font-semibold leading-5 text-myVioletColor">
