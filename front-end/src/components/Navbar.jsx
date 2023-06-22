@@ -10,7 +10,7 @@ const Navbar = ({ toggleDarkMode }) => {
   return (
     <nav className="relative flex items-center justify-between px-4 pb-8 transform rounded-bl-none shadow-xl sm:rounded-bl-full h-28 lg:px-28 md:px-12 -rotate-y-180 ">
       <div>
-        <Link to={"/"} title="The official home page of devjobs online">
+        <Link to={"/"} title="The link to the official page of the devjobs online website">
           <img className="h-auto max-w-full " src={logo} alt="the logo of devjobs" />
         </Link>
       </div>

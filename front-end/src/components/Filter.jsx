@@ -90,7 +90,7 @@ const Filter = ({ filterData, setFilterData, isDarkMode }) => {
           <input
             type="checkbox"
             id="full-time-checkbox"
-            className={` form-checkbox w-2 h-6 border-none cursor-pointer md:h-10 md:w-4  ${
+            className={` form-checkbox w-2 h-6 border-none cursor-pointer md:h-10 md:w-4  outline-none ${
               isDarkMode ? " bg-myVeryDarkBlueColor" : " bg-white"
             }`}
             checked={filterData.isFullTime}
