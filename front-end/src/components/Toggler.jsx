@@ -15,6 +15,7 @@ const Toggler = ({ toggleDarkMode }) => {
         className={`w-14 h-6 rounded-full relative transition-colors duration-300  bg-white 
       `}
         onClick={toggleMode}
+        aria-label="navbar toggler"
       >
         <div
           className={`w-4 h-4 rounded-full absolute top-1 transform hover:bg-myLightVioletColor ${

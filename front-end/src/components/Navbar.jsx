@@ -10,20 +10,20 @@ const Navbar = ({ toggleDarkMode }) => {
   return (
     <nav className="relative flex items-center justify-between px-4 pb-8 transform rounded-bl-none shadow-xl sm:rounded-bl-full h-28 lg:px-28 md:px-12 -rotate-y-180 ">
       <div>
-        <Link to={"/"}>
-          <img src={logo} alt="" />
+        <Link to={"/"} title="The official home page of devjobs online">
+          <img className="h-auto max-w-full " src={logo} alt="the logo of devjobs" />
         </Link>
       </div>
 
       <div className="flex items-center gap-1">
         <div>
-          <img className="pr-1 mt-2" src={sunIcon} alt="icon of a sun" />
+          <img className="h-auto max-w-full pr-1 mt-2" src={sunIcon} alt="icon of a sun" />
         </div>
         <div>
           <Toggler toggleDarkMode={toggleDarkMode} />
         </div>
         <div>
-          <img className="pl-2 mt-2 " src={moonIcon} alt="moon icon" />
+          <img className="h-auto max-w-full pl-2 mt-2 " src={moonIcon} alt="moon icon" />
         </div>
       </div>
     </nav>

@@ -5,6 +5,7 @@ const Button = ({ handleClick, content }) => {
     <button
       className="px-4 py-2 text-sm text-white rounded-md md:text-lg bg-myVioletColor hover:bg-myLightVioletColor"
       onClick={handleClick}
+      aria-label="apply for job"
     >
       {content}
     </button>
