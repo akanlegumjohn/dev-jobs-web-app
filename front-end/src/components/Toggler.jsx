@@ -6,7 +6,6 @@ const Toggler = ({ toggleDarkMode }) => {
 
   const toggleMode = () => {
     setIsDarkMode(!isDarkMode);
-    // Add logic to toggle dark mode in your application
   };
 
   return (

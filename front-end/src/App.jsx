@@ -2,17 +2,32 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import JobDetails from "./pages/JobDetails";
 import PageNotFound from "./pages/PageNotFound";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(
-    window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
+    // Retrieve mode from local storage on component mount
+    localStorage.getItem("mode") === "dark"
   );
+
+  useEffect(() => {
+    // Update local storage whenever mode changes
+    localStorage.setItem("mode", isDarkMode ? "dark" : "light");
+  }, [isDarkMode]);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
+
+  useEffect(() => {
+    // Add class to root element based on mode
+    const rootElement = document.documentElement;
+    if (isDarkMode) {
+      rootElement.classList.add("dark");
+    } else {
+      rootElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
 
   return (
     <BrowserRouter>
