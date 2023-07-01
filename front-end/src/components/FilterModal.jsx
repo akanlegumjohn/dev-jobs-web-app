@@ -17,10 +17,10 @@ function FilterModal({
       <Modal
         show={show}
         onHide={handleClose}
-        className="fixed inset-0 z-50 items-center justify-center ml-5 mr-8 bg-opacity-25 shadow-2xl outline-none top-44 md:hidden backdrop-filter backdrop-blur-sm backdrop-opacity-60 "
+        className="fixed inset-0 z-50 items-center justify-center bg-opacity-25 shadow-2xl outline-none md:hidden  backdrop-blur-sm backdrop-opacity-100 py-[50%] px-[2%]"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
       >
-        <Modal.Body
+        <div
           className={`flex flex-col rounded-md py-2 ${
             isDarkMode ? " bg-myVeryDarkBlueColor" : "bg-white"
           }`}
@@ -68,7 +68,7 @@ function FilterModal({
           >
             Search
           </button>
-        </Modal.Body>
+        </div>
       </Modal>
     </>
   );
