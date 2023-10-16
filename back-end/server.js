@@ -9,7 +9,7 @@ const connectDB = require("./db");
 const app = express();
 
 dotenv.config({ path: "./.env" });
-const port = process.env.PORT;
+const port = 3800;
 
 connectDB();
 

@@ -10,7 +10,7 @@ import Navbar from "../components/Navbar";
 import { imageData } from "../../images";
 
 const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
-  const API_URI = "https://devjobs.up.railway.app/api/devjobs";
+  const API_URI = "http://localhost:3800/api/devjobs";
   // Id to use for the dynamic routing of a job item
   const { id } = useParams();
   const [jobsData, setJobsData] = useState(null);
