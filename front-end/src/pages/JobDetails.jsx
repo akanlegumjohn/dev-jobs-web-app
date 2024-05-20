@@ -18,7 +18,7 @@ const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
     // Fetch job data from API when the id changes
     const fetchJobDetails = async () => {
       try {
-        const response = await axios.get("../../data.json");
+        const response = await axios.get("/data.json");
         setJobsData(response?.data);
       } catch (error) {
         console.log(error);

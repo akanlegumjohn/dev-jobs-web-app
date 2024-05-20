@@ -25,7 +25,7 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
     // Fetch job data from API
     const devJobData = async () => {
       try {
-        const response = await axios.get("../../data.json");
+        const response = await axios.get("/data.json");
         setJobsData(response?.data);
       } catch (error) {
         console.log(error);
