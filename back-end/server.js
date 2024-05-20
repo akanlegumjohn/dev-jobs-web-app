@@ -25,6 +25,4 @@ app.use(express.urlencoded({ extended: false }));
 // Set up a route for the "/api/devjobs" endpoint using the "devJobsRoutes"
 app.use("/api/devjobs", require("./devJobsRoutes"));
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`.yellow);
-});
+app.listen(port, () => {});

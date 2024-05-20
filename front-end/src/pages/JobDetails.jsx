@@ -10,7 +10,6 @@ import Navbar from "../components/Navbar";
 import { imageData } from "../../images";
 
 const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
-  const API_URI = "http://localhost:3800/api/devjobs";
   // Id to use for the dynamic routing of a job item
   const { id } = useParams();
   const [jobsData, setJobsData] = useState(null);
@@ -19,7 +18,7 @@ const JobDetails = ({ isDarkMode, toggleDarkMode }) => {
     // Fetch job data from API when the id changes
     const fetchJobDetails = async () => {
       try {
-        const response = await axios.get(API_URI);
+        const response = await axios.get("../../data.json");
         setJobsData(response?.data);
       } catch (error) {
         console.log(error);

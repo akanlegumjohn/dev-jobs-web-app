@@ -21,13 +21,11 @@ export const Home = ({ toggleDarkMode, isDarkMode }) => {
     isFullTime: false,
   });
 
-  const API_URI = "http://localhost:3800/api/devjobs";
-
   useEffect(() => {
     // Fetch job data from API
     const devJobData = async () => {
       try {
-        const response = await axios.get(API_URI);
+        const response = await axios.get("../../data.json");
         setJobsData(response?.data);
       } catch (error) {
         console.log(error);
